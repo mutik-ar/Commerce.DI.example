@@ -22,8 +22,8 @@
                         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="5" >Products</TextBlock>
                         <Button x:Name="RefreshProduct" DockPanel.Dock="Bottom" Content="Refresh" Margin="5" Width="120" Click="RefreshProduct_Click" />
                        <!--
-                         <ListBox x:Name="lbProducts"  Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" DisplayMemberPath ="Name" />
                        -->
+                         <ListBox x:Name="lbProducts"  Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" DisplayMemberPath ="Name" />
                         <DataGrid x:Name="dgProducts" Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" />
 
                     </DockPanel>
