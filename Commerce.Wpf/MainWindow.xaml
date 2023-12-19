@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Commerce.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Width="800" SizeToContent="Height">
+        Title="MainWindow" Width="1118" SizeToContent="Height">
     <Grid>
         <TabControl>
             <TabItem x:Name="tiProducts" Header="Products">
@@ -18,40 +18,49 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DockPanel Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" Height="400">
+                    <DockPanel Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" Height="500">
                         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="5" >Products</TextBlock>
                         <Button x:Name="RefreshProduct" DockPanel.Dock="Bottom" Content="Refresh" Margin="5" Width="120" Click="RefreshProduct_Click" />
                        <!--
-                       -->
                          <ListBox x:Name="lbProducts"  Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" DisplayMemberPath ="Name" />
-                        <DataGrid x:Name="dgProducts" Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" />
+                       -->
+                        <DataGrid x:Name="dgProducts" Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" IsReadOnly="True" MouseDoubleClick="dgProducts_MouseDoubleClick" />
 
                     </DockPanel>
-                    <DockPanel Grid.RowSpan="2" Grid.Row="0" Grid.Column="1" Height="400">
-                        <StackPanel  DockPanel.Dock="Bottom" >
-                            <Button x:Name="btnProduct" Content="Insert" Grid.Column="0" Grid.Row="0" Margin="5" Width="120" Click="Button_Click"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                                <TextBox x:Name="txbName" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Width="150" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5"/>
-                                <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="UnitPrice:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txbUnitPrice" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Width="150" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5"/>
-                                <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBox x:Name="txbDescription" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Width="150" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5" Height="100"/>
-                            </Grid>
-                        </StackPanel>
-                    </DockPanel>
+                    <TabControl Grid.RowSpan="2" Grid.Row="0" Grid.Column="1" Height="300" VerticalAlignment="Top">
+                        <TabItem Header="Insert">
+                            <DockPanel>
+                                <StackPanel  DockPanel.Dock="Bottom" Orientation="Horizontal" >
+                                    <Button x:Name="btnProductClr" Content="Clear" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductClr_Click" />
+                                    <Button x:Name="btnProductAdd" Content="Insert" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductAdd_Click"/>
+                                    <Button x:Name="btnProductUpd" Content="Update" Grid.Column="0" Grid.Row="0" Margin="5" Width="50"/>
+                                    <Button x:Name="btnProductDel" Content="Delete" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductDel_Click"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Id:" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                        <TextBox x:Name="txbId" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5" IsReadOnly="True"/>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                        <TextBox x:Name="txbName" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5"/>
+                                        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="UnitPrice:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        <TextBox x:Name="txbUnitPrice" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5"/>
+                                        <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Description" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        <TextBox x:Name="txbDescription" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5" Height="100"/>
+                                    </Grid>
+                                </StackPanel>
+                            </DockPanel>
+                        </TabItem>
+                    </TabControl>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">

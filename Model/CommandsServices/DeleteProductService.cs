@@ -10,31 +10,27 @@ using Model.Interfaces;
 
 namespace Model.CommandsServices
 {
-    public class InsertProductService : ICommandService<InsertProductParameter, Result>
+    public class DeleteProductService : ICommandService<IdProductParameter, Result>
     {
         private readonly IRepository<Product> repository;
 
-        public InsertProductService(IRepository<Product> repository)
+        public DeleteProductService(IRepository<Product> repository)
         {
             if (repository == null) throw new ArgumentNullException(nameof(repository));
 
             this.repository = repository;
         }
 
-        public Result Execute(InsertProductParameter parameter)
+        public Result Execute(IdProductParameter parameter)
         {
             int  code = 1;
             try
             {
-                decimal.TryParse(parameter.UnitPrice, out decimal unitPrice);
-                this.repository.Create(new Product
+                bool result = this.repository.Delete(parameter.ProductId);
+                if (result)
                 {
-                    Id = parameter.ProductId,
-                    Name = parameter.Name,
-                    UnitPrice = unitPrice,
-                    Description = parameter.Description ?? string.Empty,
-                });
-                code = 0;
+                    code = 0;
+                }
             }
             catch 
             {

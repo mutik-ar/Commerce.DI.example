@@ -11,12 +11,9 @@ using Model.Enums;
 namespace Model.Parameters
 {
     [PermittedRole(Role.Administrator)]
-    public class InsertProductParameter: IdProductParameter
+    public class IdProductParameter
     {
-        [Required, StringLength(50)]
-        public string? Name { get; set; }
-        [Required]
-        public string? UnitPrice { get; set; }
-        public string? Description { get; set; }
+        [RequiredGuid]
+        public Guid ProductId { get; set; }
     }
 }

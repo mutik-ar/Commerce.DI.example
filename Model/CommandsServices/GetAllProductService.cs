@@ -23,15 +23,16 @@ namespace Model.CommandsServices
 
         public GetAllProductsResult Execute(NullParameter parameter)
         {
-            int  code = 0;
+            int  code = 1;
             IEnumerable<Product>? products = null;
             try
             {
                 products = this.repository.GetAll();
+                code = 0;
             }
-            catch (Exception ex)
+            catch
             {
-                code = 1;
+                
             }
 
             return new GetAllProductsResult(code, products);

@@ -43,11 +43,18 @@ namespace Repository.Repositories
         {
             return db.Products.Where(predicate).ToList();
         }
-        public void Delete(Guid Id)
+        public bool Delete(Guid Id)
         {
             Product? item = db.Products.Find(Id);
             if (item != null)
+            {
                 db.Products.Remove(item);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void DeleteAll()
         {

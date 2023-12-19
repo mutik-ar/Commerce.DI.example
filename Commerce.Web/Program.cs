@@ -41,5 +41,6 @@ public static class RootComposite
     public static readonly IUnitOfWork Database = new UnitOfWork(@"Server=(localdb)\mssqllocaldb;Database=Commerce;Trusted_Connection=True");
     public static readonly ICommandService<InsertProductParameter, Result> InsertProductService = new InsertProductService(Database.Products);
     public static readonly ICommandService<NullParameter, GetAllProductsResult> GetAllProductService = new GetAllProductService(Database.Products);
+    public static readonly ICommandService<IdProductParameter, Result> DeleteProductService = new DeleteProductService(Database.Products);
 }
 

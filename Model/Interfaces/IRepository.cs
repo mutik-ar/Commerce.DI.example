@@ -14,7 +14,7 @@ namespace Model.Interfaces
         List<T> Find(Func<T, Boolean> predicate);
         void Create(T item);
         void Update(T item);
-        void Delete(Guid id);
+        bool Delete(Guid id);
         void DeleteAll();
     }
 }
