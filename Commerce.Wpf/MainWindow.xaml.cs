@@ -1,7 +1,6 @@
-﻿using Model.Parameters;
-using Model.CommandsServices;
-using Model.Interfaces;
-using Model.Results;
+﻿using Core.Parameters;
+using Core.CommandsServices;
+using Core.Results;
 using Repository.Repositories;
 using System.Text;
 using System.Windows;
@@ -13,12 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model.Entities;
+using Core.Entities;
 using System.Security.Cryptography;
 using System.Collections.ObjectModel;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Core.Ports.Driving;
+using Core.Ports.Driven;
 
 namespace Commerce.Wpf
 {
@@ -50,8 +51,7 @@ namespace Commerce.Wpf
             _deleteProductService = new DeleteProductService(_database.Products);
             _updateProductService = new UpdateProductService(_database.Products);
             GetAllProducts();
-            btnProductAdd.IsEnabled = true;
-            btnProductDel.IsEnabled = btnProductUpd.IsEnabled = false;
+            ClearItem();
         }
 
         private void RefreshProduct_Click(object sender, RoutedEventArgs e)
@@ -111,6 +111,7 @@ namespace Commerce.Wpf
                     txbUnitPrice.Text = product.UnitPrice.ToString();
                     txbDescription.Text = product.Description.ToString();
                 }
+                lbId.Visibility = txbId.Visibility = Visibility.Visible;
                 btnProductAdd.IsEnabled = false;
                 btnProductDel.IsEnabled = btnProductUpd.IsEnabled = true;
             }
@@ -134,6 +135,7 @@ namespace Commerce.Wpf
         private void ClearItem()
         {
             txbId.Text = txbName.Text = txbUnitPrice.Text = txbDescription.Text = string.Empty;
+            lbId.Visibility = txbId.Visibility = Visibility.Hidden;
             btnProductAdd.IsEnabled = true;
             btnProductDel.IsEnabled = btnProductUpd.IsEnabled = false;
         }

@@ -1,10 +1,8 @@
 using Commerce.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Model.CommandsServices;
-using Model.Entities;
-using Model.Parameters;
-using Model.Results;
-using System;
+using Core.Entities;
+using Core.Parameters;
+using Core.Results;
 using System.Diagnostics;
 
 namespace Commerce.Web.Controllers
@@ -28,6 +26,7 @@ namespace Commerce.Web.Controllers
         [HttpPost("/products/Create")]
         public IActionResult Create([FromForm] ProductParameter productParameter)
         {
+            productParameter.ProductId = Guid.NewGuid();
             Result result = RootComposite.InsertProductService.Execute(productParameter);
             string message = "Fail";
             if (result.Code == 0)
@@ -41,7 +40,7 @@ namespace Commerce.Web.Controllers
         [HttpGet("/products/Create")]
         public IActionResult Create()
         {
-            ProductParameter productParameter = new() { ProductId = Guid.NewGuid(), Name = "", UnitPrice = "", Description ="" };
+            ProductParameter productParameter = new() { Name = "", UnitPrice = "", Description ="" };
             return View(model: productParameter);
         }
 

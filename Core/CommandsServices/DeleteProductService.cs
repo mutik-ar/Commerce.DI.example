@@ -1,14 +1,15 @@
-﻿using Model.Entities;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Parameters;
-using Model.Results;
-using Model.Interfaces;
+using Core.Parameters;
+using Core.Results;
+using Core.Ports.Driving;
+using Core.Ports.Driven;
 
-namespace Model.CommandsServices
+namespace Core.CommandsServices
 {
     public class DeleteProductService : ICommandService<IdProductParameter, Result>
     {

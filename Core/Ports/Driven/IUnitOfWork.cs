@@ -4,9 +4,9 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Entities;
+using Core.Entities;
 
-namespace Model.Interfaces
+namespace Core.Ports.Driven
 {
     public interface IUnitOfWork : IDisposable
     {

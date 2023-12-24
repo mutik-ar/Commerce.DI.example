@@ -48,7 +48,7 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Id:" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                        <TextBlock x:Name="lbId" Grid.Row="0" TextWrapping="Wrap" Text="Id:" HorizontalAlignment="Right" VerticalAlignment="Center" />
                                         <TextBox x:Name="txbId" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5" IsReadOnly="True"/>
                                         <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center" />
                                         <TextBox x:Name="txbName" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Width="200" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="5"/>

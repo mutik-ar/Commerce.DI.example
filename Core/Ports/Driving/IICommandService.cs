@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Interfaces
+namespace Core.Ports.Driving
 {
-    public interface ICommandService<in T, out P> 
+    public interface ICommandService<in T, out P>
         where T : class
         where P : class
     {

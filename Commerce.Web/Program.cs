@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore;
-using Model.Interfaces;
-using Model.Parameters;
-using Model.Results;
-using Model.CommandsServices;
+using Core.Parameters;
+using Core.Results;
+using Core.CommandsServices;
 using Repository.Repositories;
+using Core.Ports.Driving;
+using Core.Ports.Driven;
 
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Model.Entities;
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Interfaces;
 using Repository.EF;
 using System.Collections.ObjectModel;
+using Core.Ports.Driven;
 
 namespace Repository.Repositories
 {

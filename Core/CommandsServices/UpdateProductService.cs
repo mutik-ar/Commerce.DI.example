@@ -1,20 +1,21 @@
-﻿using Model.Entities;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Parameters;
-using Model.Results;
-using Model.Interfaces;
+using Core.Parameters;
+using Core.Results;
+using Core.Ports.Driving;
+using Core.Ports.Driven;
 
-namespace Model.CommandsServices
+namespace Core.CommandsServices
 {
-    public class InsertProductService : ICommandService<ProductParameter, Result>
+    public class UpdateProductService : ICommandService<ProductParameter, Result>
     {
         private readonly IRepository<Product> repository;
 
-        public InsertProductService(IRepository<Product> repository)
+        public UpdateProductService(IRepository<Product> repository)
         {
             if (repository == null) throw new ArgumentNullException(nameof(repository));
 
@@ -23,11 +24,11 @@ namespace Model.CommandsServices
 
         public Result Execute(ProductParameter parameter)
         {
-            int  code = 1;
+            int code = 1;
             try
             {
                 decimal.TryParse(parameter.UnitPrice, out decimal unitPrice);
-                this.repository.Create(new Product
+                this.repository.Update(new Product
                 {
                     Id = parameter.ProductId,
                     Name = parameter.Name,
@@ -36,7 +37,7 @@ namespace Model.CommandsServices
                 });
                 code = 0;
             }
-            catch 
+            catch
             {
             }
             return new Result(code);

@@ -5,10 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Attributes;
-using Model.Enums;
+using Core.Attributes;
+using Core.Enums;
 
-namespace Model.Parameters
+namespace Core.Parameters
 {
     public class NullParameter
     {
