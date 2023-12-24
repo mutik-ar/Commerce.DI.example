@@ -26,9 +26,9 @@ namespace Commerce.Web.Controllers
         }
 
         [HttpPost("/products/Create")]
-        public IActionResult Create([FromForm] InsertProductParameter insertProductParameter)
+        public IActionResult Create([FromForm] ProductParameter productParameter)
         {
-            Result result = RootComposite.InsertProductService.Execute(insertProductParameter);
+            Result result = RootComposite.InsertProductService.Execute(productParameter);
             string message = "Fail";
             if (result.Code == 0)
             {
@@ -41,8 +41,8 @@ namespace Commerce.Web.Controllers
         [HttpGet("/products/Create")]
         public IActionResult Create()
         {
-            InsertProductParameter insertProductParameter = new() { ProductId = Guid.NewGuid(), Name = "", UnitPrice = "", Description ="" };
-            return View(model: insertProductParameter);
+            ProductParameter productParameter = new() { ProductId = Guid.NewGuid(), Name = "", UnitPrice = "", Description ="" };
+            return View(model: productParameter);
         }
 
         [HttpGet("/products/Delete")]
@@ -58,6 +58,38 @@ namespace Commerce.Web.Controllers
             }
             return RedirectToAction(nameof(Result), new { Message = message });
         }
+
+        [HttpGet("/products/Edit")]
+        public IActionResult Edit(Guid Id)
+        {
+            IdProductParameter idProductParameter = new() { ProductId = Id };
+            GetProductsResult result = RootComposite.GetProductService.Execute(idProductParameter); ;
+            ProductParameter productParameter = new();
+            if (result.Product != null)
+            {
+                productParameter.ProductId = result.Product.Id;
+                productParameter.Name = result.Product.Name;
+                productParameter.UnitPrice = result.Product.UnitPrice.ToString();
+                productParameter.Description = result.Product.Description;
+
+            }
+            return View(model: productParameter); 
+        }
+
+        [HttpPost("/products/Edit")]
+        public IActionResult Edit([FromForm] ProductParameter productParameter)
+        {
+            Result result = RootComposite.UpdateProductService.Execute(productParameter);
+            string message = "Fail";
+            if (result.Code == 0)
+            {
+                RootComposite.Database.Save();
+                message = "Success";
+            }
+            return RedirectToAction(nameof(Result), new { Message = message });
+        }
+
+
 
         [HttpGet("/products/Result")]
         public IActionResult Result(string Message)

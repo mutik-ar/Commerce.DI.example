@@ -33,7 +33,7 @@
                                 <StackPanel  DockPanel.Dock="Bottom" Orientation="Horizontal" >
                                     <Button x:Name="btnProductClr" Content="Clear" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductClr_Click" />
                                     <Button x:Name="btnProductAdd" Content="Insert" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductAdd_Click"/>
-                                    <Button x:Name="btnProductUpd" Content="Update" Grid.Column="0" Grid.Row="0" Margin="5" Width="50"/>
+                                    <Button x:Name="btnProductUpd" Content="Update" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductUpd_Click"/>
                                     <Button x:Name="btnProductDel" Content="Delete" Grid.Column="0" Grid.Row="0" Margin="5" Width="50" Click="btnProductDel_Click"/>
                                 </StackPanel>
                                 <StackPanel>

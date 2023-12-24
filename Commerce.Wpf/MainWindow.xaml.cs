@@ -30,9 +30,10 @@ namespace Commerce.Wpf
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         IUnitOfWork _database;
-        ICommandService<InsertProductParameter, Result> _insertProductService;
+        ICommandService<ProductParameter, Result> _insertProductService;
         ICommandService<IdProductParameter, Result> _deleteProductService;
         ICommandService<NullParameter, GetAllProductsResult> _getAllProductService;
+        ICommandService<ProductParameter, Result> _updateProductService;
         public IEnumerable<Product> Products { get {return _products ;} set {_products= (List<Product>)value; OnPropertyChanged("Products"); } }
         List<Product> _products = new();
 
@@ -47,6 +48,7 @@ namespace Commerce.Wpf
             _insertProductService = new InsertProductService(_database.Products);
             _getAllProductService = new GetAllProductService(_database.Products);
             _deleteProductService = new DeleteProductService(_database.Products);
+            _updateProductService = new UpdateProductService(_database.Products);
             GetAllProducts();
             btnProductAdd.IsEnabled = true;
             btnProductDel.IsEnabled = btnProductUpd.IsEnabled = false;
@@ -73,7 +75,7 @@ namespace Commerce.Wpf
 
         private void btnProductAdd_Click(object sender, RoutedEventArgs e)
         {
-            InsertProductParameter insertProductParameter = new()
+            ProductParameter productParameter = new()
             {
                 ProductId = Guid.NewGuid(),
                 Name = txbName.Text,
@@ -81,7 +83,7 @@ namespace Commerce.Wpf
                 Description = txbDescription.Text
             };
 
-            Result result = _insertProductService.Execute(insertProductParameter);
+            Result result = _insertProductService.Execute(productParameter);
 
             if (result.Code == 0)
             {
@@ -136,5 +138,21 @@ namespace Commerce.Wpf
             btnProductDel.IsEnabled = btnProductUpd.IsEnabled = false;
         }
 
+        private void btnProductUpd_Click(object sender, RoutedEventArgs e)
+        {
+            ProductParameter productParameter = new()
+            {
+                ProductId = new Guid(txbId.Text),
+                Name = txbName.Text,
+                UnitPrice = txbUnitPrice.Text,
+                Description = txbDescription.Text
+            };
+            Result result = _updateProductService.Execute(productParameter);
+            if (result.Code == 0)
+            {
+                _database.Save();
+            }
+            GetAllProducts();
+        }
     }
 }

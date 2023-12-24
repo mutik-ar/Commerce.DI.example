@@ -10,11 +10,11 @@ using Model.Interfaces;
 
 namespace Model.CommandsServices
 {
-    public class InsertProductService : ICommandService<ProductParameter, Result>
+    public class UpdateProductService : ICommandService<ProductParameter, Result>
     {
         private readonly IRepository<Product> repository;
 
-        public InsertProductService(IRepository<Product> repository)
+        public UpdateProductService(IRepository<Product> repository)
         {
             if (repository == null) throw new ArgumentNullException(nameof(repository));
 
@@ -23,11 +23,11 @@ namespace Model.CommandsServices
 
         public Result Execute(ProductParameter parameter)
         {
-            int  code = 1;
+            int code = 1;
             try
             {
                 decimal.TryParse(parameter.UnitPrice, out decimal unitPrice);
-                this.repository.Create(new Product
+                this.repository.Update(new Product
                 {
                     Id = parameter.ProductId,
                     Name = parameter.Name,
@@ -36,7 +36,7 @@ namespace Model.CommandsServices
                 });
                 code = 0;
             }
-            catch 
+            catch
             {
             }
             return new Result(code);

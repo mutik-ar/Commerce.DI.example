@@ -37,7 +37,14 @@ namespace Repository.Repositories
 
         public void Update(Product item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            Product product = db.Products.Find(item.Id);
+            if (product != null)
+            {
+                product.Name = item.Name;
+                product.Description = item.Description;
+                product.UnitPrice = item.UnitPrice;
+                db.Entry(product).State = EntityState.Modified;
+            }
         }
         public List<Product> Find(Func<Product, Boolean> predicate)
         {
