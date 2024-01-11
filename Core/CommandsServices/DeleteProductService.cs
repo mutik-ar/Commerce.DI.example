@@ -8,6 +8,7 @@ using Core.Parameters;
 using Core.Results;
 using Core.Ports.Driving;
 using Core.Ports.Driven;
+using Core.DTO;
 
 namespace Core.CommandsServices
 {

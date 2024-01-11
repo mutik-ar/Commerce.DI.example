@@ -4,6 +4,7 @@ using Core.Entities;
 using Core.Parameters;
 using Core.Results;
 using System.Diagnostics;
+using Core.DTO;
 
 namespace Commerce.Web.Controllers
 {
@@ -19,7 +20,7 @@ namespace Commerce.Web.Controllers
         [HttpGet("/products/")]
         public IActionResult Products()
         {
-            IEnumerable<Product> products = RootComposite.GetAllProductService.Execute(new NullParameter()).Products;
+            IEnumerable<ProductDTO> products = RootComposite.GetAllProductService.Execute(new NullParameter()).Products;
             return View(model: products);
         }
 

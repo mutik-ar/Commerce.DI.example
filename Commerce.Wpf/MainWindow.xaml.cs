@@ -20,6 +20,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Core.Ports.Driving;
 using Core.Ports.Driven;
+using Core.DTO;
 
 namespace Commerce.Wpf
 {
@@ -35,8 +36,8 @@ namespace Commerce.Wpf
         ICommandService<IdProductParameter, Result> _deleteProductService;
         ICommandService<NullParameter, GetAllProductsResult> _getAllProductService;
         ICommandService<ProductParameter, Result> _updateProductService;
-        public IEnumerable<Product> Products { get {return _products ;} set {_products= (List<Product>)value; OnPropertyChanged("Products"); } }
-        List<Product> _products = new();
+        public List<ProductDTO> ProductDTOs { get {return _products.ToList() ;} set {_products= (List<ProductDTO>)value; OnPropertyChanged("ProductDTOs"); } }
+        List<ProductDTO> _products;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -61,10 +62,10 @@ namespace Commerce.Wpf
 
         private void GetAllProducts()
         {
-            IEnumerable<Product> products = _getAllProductService.Execute(new NullParameter()).Products;
-            if (products != null)
+            IEnumerable<ProductDTO> productDTOs = _getAllProductService.Execute(new NullParameter()).Products;
+            if (productDTOs != null)
             {
-                Products = products;
+                ProductDTOs = productDTOs.ToList();
             }
         }
         
@@ -103,7 +104,7 @@ namespace Commerce.Wpf
             int index = ((DataGrid)sender).SelectedIndex;
             if (index >= 0)
             {
-                Product product = (Product)((DataGrid)sender).Items[index];
+                ProductDTO product = (ProductDTO)((DataGrid)sender).Items[index];
                 if (product != null )
                 {
                     txbId.Text = product.Id.ToString();

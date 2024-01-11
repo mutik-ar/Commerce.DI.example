@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.DTO;
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace Core.Results
 {
     public class GetAllProductsResult: Result
     {
-        private IEnumerable<Product>? _products;
-        public GetAllProductsResult(int code, IEnumerable<Product>? products) : base(code)
+        private IEnumerable<ProductDTO>? _products;
+        public GetAllProductsResult(int code, IEnumerable<ProductDTO>? products) : base(code)
         {
             _products = products;
         }
-        public IEnumerable<Product>? Products { get { return _products; } }
+        public IEnumerable<ProductDTO>? Products { get { return _products; } }
 
     }
 }

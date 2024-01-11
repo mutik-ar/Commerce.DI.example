@@ -24,7 +24,7 @@
                        <!--
                          <ListBox x:Name="lbProducts"  Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" DisplayMemberPath ="Name" />
                        -->
-                        <DataGrid x:Name="dgProducts" Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=Products}" IsReadOnly="True" MouseDoubleClick="dgProducts_MouseDoubleClick" />
+                        <DataGrid x:Name="dgProducts" Grid.RowSpan="2" Grid.Row="0" ItemsSource="{Binding Path=ProductDTOs}" IsReadOnly="True" MouseDoubleClick="dgProducts_MouseDoubleClick" />
 
                     </DockPanel>
                     <TabControl Grid.RowSpan="2" Grid.Row="0" Grid.Column="1" Height="300" VerticalAlignment="Top">

@@ -8,6 +8,8 @@ using Core.Parameters;
 using Core.Results;
 using Core.Ports.Driving;
 using Core.Ports.Driven;
+using Core.Utils;
+using Core.DTO;
 
 namespace Core.CommandsServices
 {
@@ -25,18 +27,22 @@ namespace Core.CommandsServices
         public GetAllProductsResult Execute(NullParameter parameter)
         {
             int  code = 1;
-            IEnumerable<Product>? products = null;
+            IEnumerable<ProductDTO>? productDTOs = null;
             try
             {
-                products = this.repository.GetAll();
+                IEnumerable<Product>?  products = this.repository.GetAll();
                 code = 0;
+                productDTOs = products?.ToList().Select(i =>
+                {
+                    return ProductConvert.ProductToDto(i);
+                }).AsEnumerable();
             }
             catch
             {
                 
             }
 
-            return new GetAllProductsResult(code, products);
+            return new GetAllProductsResult(code, productDTOs);
         }
     }
 }
