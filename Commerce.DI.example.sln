@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commerce.Wpf", "Commerce.Wp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commerce.Web", "Commerce.Web\Commerce.Web.csproj", "{FFC5668A-D103-459D-B6CF-6C6A1A9B9235}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Core.Tests\Core.Tests.csproj", "{0A9D4C10-7C4A-40AB-A4D7-D7EBF47AD62F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FFC5668A-D103-459D-B6CF-6C6A1A9B9235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC5668A-D103-459D-B6CF-6C6A1A9B9235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC5668A-D103-459D-B6CF-6C6A1A9B9235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9D4C10-7C4A-40AB-A4D7-D7EBF47AD62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9D4C10-7C4A-40AB-A4D7-D7EBF47AD62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9D4C10-7C4A-40AB-A4D7-D7EBF47AD62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9D4C10-7C4A-40AB-A4D7-D7EBF47AD62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

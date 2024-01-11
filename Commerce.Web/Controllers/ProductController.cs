@@ -49,7 +49,7 @@ namespace Commerce.Web.Controllers
         public IActionResult Delete(Guid Id)
         {
             IdProductParameter idProductParameter = new() { ProductId = Id };
-            Result result = RootComposite.DeleteProductService.Execute(idProductParameter); ;
+            Result result = RootComposite.DeleteProductService.Execute(idProductParameter);
             string message = "Fail";
             if (result.Code == 0)
             {
